@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<library>
+    <books>
+        <book id="1">
+            <title>To Kill a Mockingbird</title>
+            <author>Harper Lee</author>
+            <year>1960</year>
+            <isbn>978-0446310789</isbn>
+            <publisher>Grand Central Publishing</publisher>
+            <category>Fiction</category>
+            <description><![CDATA[A novel about racial inequality in the South during the 1930s, told through the eyes of a young girl named Scout Finch.]]></description>
+        </book>
+        <book id="2">
+            <title>1984</title>
+            <author>George Orwell</author>
+            <year>1949</year>
+            <isbn>978-0451524935</isbn>
+            <publisher>Signet Classic</publisher>
+            <category>Dystopian</category>
+            <description><![CDATA[A dystopian social science fiction novel that depicts a totalitarian society ruled by Big Brother.]]></description>
+        </book>
+        <book id="3">
+            <title>The Great Gatsby</title>
+            <author>F. Scott Fitzgerald</author>
+            <year>1925</year>
+            <isbn>978-0743273565</isbn>
+            <publisher>Scribner</publisher>
+            <category>Fiction</category>
+            <description><![CDATA[A novel that follows a cast of characters living in the fictional town of West Egg on Long Island in the summer of 1922.]]></description>
+        </book>
+        <book id="4">
+            <title>The Hobbit</title>
+            <author>J.R.R. Tolkien</author>
+            <year>1937</year>
+            <isbn>978-0618260300</isbn>
+            <publisher>Houghton Mifflin</publisher>
+            <category>Fantasy</category>
+            <description><![CDATA[A fantasy novel about the adventures of hobbit Bilbo Baggins in Middle-earth.]]></description>
+        </book>
+        <book id="5">
+            <title>The Catcher in the Rye</title>
+            <author>J.D. Salinger</author>
+            <year>1951</year>
+            <isbn>978-0316769488</isbn>
+            <publisher>Little, Brown and Company</publisher>
+            <category>Fiction</category>
+            <description><![CDATA[A novel about teenage angst and alienation, narrated by the protagonist Holden Caulfield.]]></description>
+            <!-- Example of an XML comment: This book was banned in several countries -->
+        </book>
+    </books>
+    <users>
+        <!-- This section contains user information (example only) -->
+        <user id="1">
+            <username>admin</username>
+            <role>admin</role>
+        </user>
+        <user id="2">
+            <username>student</username>
+            <role>student</role>
+        </user>
+    </users>
+</library>

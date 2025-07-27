@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<requests>
+    <!-- XPath örnek istekleri -->
+    <xpath-request>
+        <name>Get All Book Titles</name>
+        <request-body>
+            <xpath>//book/title/text()</xpath>
+            <content>
+                <library>
+                    <books>
+                        <book id="1">
+                            <title>To Kill a Mockingbird</title>
+                            <author>Harper Lee</author>
+                            <year>1960</year>
+                            <isbn>978-0446310789</isbn>
+                        </book>
+                        <book id="2">
+                            <title>1984</title>
+                            <author>George Orwell</author>
+                            <year>1949</year>
+                            <isbn>978-0451524935</isbn>
+                        </book>
+                    </books>
+                </library>
+            </content>
+        </request-body>
+    </xpath-request>
+    
+    <xpath-request>
+        <name>Count Books</name>
+        <request-body>
+            <xpath>count(//book)</xpath>
+            <content>
+                <library>
+                    <books>
+                        <book id="1">
+                            <title>To Kill a Mockingbird</title>
+                            <author>Harper Lee</author>
+                        </book>
+                        <book id="2">
+                            <title>1984</title>
+                            <author>George Orwell</author>
+                        </book>
+                    </books>
+                </library>
+            </content>
+        </request-body>
+    </xpath-request>
+    
+    <!-- XSLT örnek istekleri -->
+    <xslt-request>
+        <name>Transform to HTML</name>
+        <request-body>
+            <stylesheet-type>html</stylesheet-type>
+            <content>
+                <library>
+                    <books>
+                        <book id="1">
+                            <title>To Kill a Mockingbird</title>
+                            <author>Harper Lee</author>
+                            <year>1960</year>
+                            <isbn>978-0446310789</isbn>
+                            <publisher>Grand Central Publishing</publisher>
+                            <category>Fiction</category>
+                            <description>A novel about racial inequality in the South during the 1930s.</description>
+                        </book>
+                        <book id="2">
+                            <title>1984</title>
+                            <author>George Orwell</author>
+                            <year>1949</year>
+                            <isbn>978-0451524935</isbn>
+                            <publisher>Signet Classic</publisher>
+                            <category>Dystopian</category>
+                            <description>A dystopian social science fiction novel that depicts a totalitarian society.</description>
+                        </book>
+                    </books>
+                </library>
+            </content>
+        </request-body>
+    </xslt-request>
+    
+    <xslt-request>
+        <name>Transform to Text</name>
+        <request-body>
+            <stylesheet-type>text</stylesheet-type>
+            <content>
+                <library>
+                    <books>
+                        <book id="1">
+                            <title>To Kill a Mockingbird</title>
+                            <author>Harper Lee</author>
+                            <year>1960</year>
+                            <isbn>978-0446310789</isbn>
+                            <publisher>Grand Central Publishing</publisher>
+                            <category>Fiction</category>
+                            <description>A novel about racial inequality in the South during the 1930s.</description>
+                        </book>
+                    </books>
+                </library>
+            </content>
+        </request-body>
+    </xslt-request>
+    
+    <xslt-request>
+        <name>Transform to Simplified XML</name>
+        <request-body>
+            <stylesheet-type>simplified</stylesheet-type>
+            <content>
+                <library>
+                    <books>
+                        <book id="1">
+                            <title>To Kill a Mockingbird</title>
+                            <author>Harper Lee</author>
+                            <year>1960</year>
+                            <isbn>978-0446310789</isbn>
+                            <publisher>Grand Central Publishing</publisher>
+                            <category>Fiction</category>
+                            <description>A novel about racial inequality in the South during the 1930s.</description>
+                        </book>
+                        <book id="2">
+                            <title>1984</title>
+                            <author>George Orwell</author>
+                            <year>1949</year>
+                            <isbn>978-0451524935</isbn>
+                            <publisher>Signet Classic</publisher>
+                            <category>Dystopian</category>
+                            <description>A dystopian social science fiction novel that depicts a totalitarian society.</description>
+                        </book>
+                    </books>
+                </library>
+            </content>
+        </request-body>
+    </xslt-request>
+</requests>

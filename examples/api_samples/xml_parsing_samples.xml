@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<requests>
+    <!-- XML Parsing API örnekleri -->
+    <parsing-request>
+        <name>All Parsing Methods</name>
+        <url>/api/v1/parsing/methods</url>
+        <description>Test all XML parsing methods (DOM, SAX, ElementTree)</description>
+        <request-body>
+            <library>
+                <books>
+                    <book id="1">
+                        <title>To Kill a Mockingbird</title>
+                        <author>Harper Lee</author>
+                        <year>1960</year>
+                        <isbn>978-0446310789</isbn>
+                        <publisher>Grand Central Publishing</publisher>
+                        <category>Fiction</category>
+                    </book>
+                    <book id="2">
+                        <title>1984</title>
+                        <author>George Orwell</author>
+                        <year>1949</year>
+                        <isbn>978-0451524935</isbn>
+                        <publisher>Signet Classic</publisher>
+                        <category>Dystopian</category>
+                    </book>
+                    <book id="3">
+                        <title>The Great Gatsby</title>
+                        <author>F. Scott Fitzgerald</author>
+                        <year>1925</year>
+                        <isbn>978-0743273565</isbn>
+                        <publisher>Scribner</publisher>
+                        <category>Fiction</category>
+                    </book>
+                </books>
+            </library>
+        </request-body>
+    </parsing-request>
+
+    <parsing-request>
+        <name>Performance Comparison</name>
+        <url>/api/v1/parsing/performance?repeat=50</url>
+        <description>Compare performance of different parsing methods</description>
+        <request-body>
+            <library>
+                <books>
+                    <book id="1">
+                        <title>To Kill a Mockingbird</title>
+                        <author>Harper Lee</author>
+                        <year>1960</year>
+                    </book>
+                    <book id="2">
+                        <title>1984</title>
+                        <author>George Orwell</author>
+                        <year>1949</year>
+                    </book>
+                    <!-- Add more books to increase performance difference -->
+                    <book id="3">
+                        <title>The Great Gatsby</title>
+                        <author>F. Scott Fitzgerald</author>
+                        <year>1925</year>
+                    </book>
+                    <book id="4">
+                        <title>Pride and Prejudice</title>
+                        <author>Jane Austen</author>
+                        <year>1813</year>
+                    </book>
+                    <book id="5">
+                        <title>The Hobbit</title>
+                        <author>J.R.R. Tolkien</author>
+                        <year>1937</year>
+                    </book>
+                </books>
+            </library>
+        </request-body>
+    </parsing-request>
+</requests>
