@@ -1,5 +1,0 @@
-<!DOCTYPE login [
-  <!ELEMENT login (username, password)>
-  <!ELEMENT username (#PCDATA)>
-  <!ELEMENT password (#PCDATA)>
-]>

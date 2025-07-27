@@ -1,9 +1,0 @@
-<!ELEMENT book (title, author, year, isbn, publisher?, category?, description?)>
-<!ATTLIST book id ID #IMPLIED>
-<!ELEMENT title (#PCDATA)>
-<!ELEMENT author (#PCDATA)>
-<!ELEMENT year (#PCDATA)>
-<!ELEMENT isbn (#PCDATA)>
-<!ELEMENT publisher (#PCDATA)>
-<!ELEMENT category (#PCDATA)>
-<!ELEMENT description (#PCDATA)>
