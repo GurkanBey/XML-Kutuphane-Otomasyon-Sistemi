@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Library Automation System</title>    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/api-info.css">
+    <link rel="stylesheet" href="css/api-endpoints.css">
+    <link rel="stylesheet" href="css/token-display.css">
+    <link rel="stylesheet" href="css/enhanced-design.css">
+</head>
+<body>
+    <!-- Header Section -->
+    <header class="header">
+        <h1>Library Automation System</h1>
+        <p>XML-Based Book Management</p>
+    </header>    <!-- Navigation Bar -->
+    <nav class="navbar">
+        <a href="#" class="navbar-brand">LibraryXML</a>
+        <ul class="navbar-nav">
+            <li class="nav-item">
+                <span id="welcome-message"></span>
+            </li>
+            <li class="nav-item">
+                <div id="token-display" class="token-display hidden">
+                    <span>JWT Token: </span>
+                    <span id="token-value" class="token-value"></span>
+                    <button id="copy-token-btn" class="btn btn-small" title="Copy token">Copy</button>
+                </div>
+            </li>
+            <li class="nav-item">
+                <button id="logout-btn" class="btn btn-logout hidden">Logout</button>
+            </li>
+        </ul>
+    </nav>
+    
+    <!-- Alert Box --><div id="alert-box" class="alert hidden"></div>
+      <!-- API Info Container - Will be shown regardless of login status -->
+    <div id="api-info-container" class="api-info-container hidden"></div>
+    
+    <!-- API v1 Endpoints Container -->
+    <div id="api-endpoints-container" class="api-info-container hidden">
+        <div class="api-card">
+            <h3>API v1 Endpoints</h3>
+            <div class="button-container">
+                <button id="view-api-endpoints-btn" class="btn btn-small">View API v1 Endpoints</button>
+            </div>
+            <div id="endpoints-list" class="endpoints-list hidden"></div>
+        </div>
+    </div>
+    
+    <div class="container">
+        <!-- Login Panel -->
+        <div id="login-panel" class="login-container">
+            <div class="card">
+                <h2>Login</h2>
+                <form id="login-form">
+                    <div class="form-group">
+                        <label for="username" class="form-label">Username:</label>
+                        <input type="text" id="username" class="form-control" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="password" class="form-label">Password:</label>
+                        <input type="password" id="password" class="form-control" required>
+                    </div>
+                    <button type="submit" class="btn">Login</button>
+                </form>
+                <div class="form-group" style="margin-top: 20px;">
+                    <p><strong>Sample Users:</strong></p>
+                    <p>Admin: username=admin, password=admin123</p>
+                    <p>Student: username=student, password=student123</p>
+                </div>
+            </div>
+        </div>
+          <!-- Admin Panel -->
+        <div id="admin-panel" class="hidden">
+            <h2>Admin Dashboard</h2>
+            <p>Welcome to the admin dashboard. You can manage the library books here.</p>
+            
+            <!-- Admin Actions -->
+            <div class="admin-actions">
+                <button id="add-book-btn" class="btn">Add New Book</button>
+                <a href="admin/api_test.html" class="btn btn-api-test">API Test Panel</a>            </div>
+            
+            <h3>Library Books</h3>
+            <div id="admin-books-container" class="books-container">
+                <!-- Books will be loaded dynamically here -->
+                <div class="spinner"></div>
+            </div>
+        </div>
+        
+        <!-- Student Panel -->
+        <div id="student-panel" class="hidden">
+            <h2>Student Dashboard</h2>
+            <p>Welcome to the student dashboard. You can browse the library books here.</p>
+            
+            <h3>Available Books</h3>
+            <div id="student-books-container" class="books-container">
+                <!-- Books will be loaded dynamically here -->
+                <div class="spinner"></div>
+            </div>
+        </div>
+        
+        <!-- Add Book Modal -->
+        <div id="add-book-modal" class="modal">
+            <div class="modal-content">
+                <span id="close-modal" class="close-modal">&times;</span>
+                <h2>Add New Book</h2>
+                <form id="add-book-form">
+                    <div class="form-group">
+                        <label for="book-title" class="form-label">Title:</label>
+                        <input type="text" id="book-title" class="form-control" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="book-author" class="form-label">Author:</label>
+                        <input type="text" id="book-author" class="form-control" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="book-year" class="form-label">Year:</label>
+                        <input type="number" id="book-year" class="form-control" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="book-isbn" class="form-label">ISBN:</label>
+                        <input type="text" id="book-isbn" class="form-control" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="book-publisher" class="form-label">Publisher:</label>
+                        <input type="text" id="book-publisher" class="form-control">
+                    </div>
+                    <div class="form-group">
+                        <label for="book-category" class="form-label">Category:</label>
+                        <input type="text" id="book-category" class="form-control">
+                    </div>
+                    <div class="form-group">
+                        <label for="book-description" class="form-label">Description:</label>
+                        <textarea id="book-description" class="form-control" rows="4"></textarea>
+                    </div>
+                    <button type="submit" class="btn">Submit</button>
+                </form>
+            </div>
+        </div>
+    </div>
+      <!-- XML Modal for displaying book XML -->
+    <div id="xml-modal" class="xml-modal">
+        <div class="xml-modal-content">
+            <span class="close-xml-modal">&times;</span>
+            <h2>Book XML</h2>
+            <div id="xml-display" class="xml-display"></div>
+        </div>
+    </div>
+    
+    <!-- Footer -->
+    <footer class="header" style="margin-top: 30px;">
+        <p>&copy; 2025 Library Automation System - XML Project</p>
+    </footer>
+    
+    <script src="js/app.js"></script>
+</body>
+</html>

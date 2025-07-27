@@ -1,0 +1,65 @@
+.api-card {
+    background-color: var(--light-gray);
+    border-radius: var(--border-radius);
+    box-shadow: var(--box-shadow);
+    padding: 1rem;
+    margin-bottom: 1.5rem;
+    border-top: 4px solid var(--primary-color);
+}
+
+.api-card h3 {
+    color: var(--secondary-color);
+    border-bottom: 1px solid #ddd;
+    padding-bottom: 0.5rem;
+    margin-bottom: 0.8rem;
+}
+
+.button-container {
+    margin: 1rem 0;
+}
+
+.btn-small {
+    padding: 0.5rem 1rem;
+    font-size: 0.9rem;
+}
+
+.endpoints-list {
+    margin-top: 1rem;
+}
+
+.endpoint-group {
+    margin-bottom: 1.5rem;
+}
+
+.endpoint-group h4 {
+    color: var(--secondary-color);
+    margin-bottom: 0.5rem;
+    font-size: 1.1rem;
+}
+
+.endpoints-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 1rem;
+    font-size: 0.9rem;
+}
+
+.endpoints-table th, 
+.endpoints-table td {
+    border: 1px solid #ddd;
+    padding: 0.5rem;
+    text-align: left;
+}
+
+.endpoints-table th {
+    background-color: #f0f0f0;
+    font-weight: 500;
+}
+
+.endpoints-table code {
+    background-color: #f5f5f5;
+    padding: 0.1rem 0.3rem;
+    border-radius: 3px;
+    font-family: monospace;
+    font-size: 0.9rem;
+}

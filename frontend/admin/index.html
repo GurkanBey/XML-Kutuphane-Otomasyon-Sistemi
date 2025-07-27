@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>XML Library - Admin Dashboard</title>
+    <link rel="stylesheet" href="../css/admin.css">
+    <script src="../js/api_test.js" defer></script>
+</head>
+<body>
+    <header>
+        <div class="logo">XML Library Admin Panel</div>
+        <nav>
+            <ul>
+                <li class="active"><a href="index.html">Home</a></li>
+                <li><a href="books.html">Books</a></li>
+                <li><a href="users.html">Users</a></li>
+                <li><a href="api_test.html">API Test</a></li>
+                <li><a href="#" id="logoutBtn">Logout</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main class="container">
+        <h1>Admin Dashboard</h1>
+        
+        <div class="dashboard-cards">
+            <div class="card">
+                <h2>Books Management</h2>
+                <p>Manage the library's book collection</p>
+                <a href="books.html" class="card-btn">Open Books</a>
+            </div>
+            
+            <div class="card">
+                <h2>User Management</h2>
+                <p>Manage system users and permissions</p>
+                <a href="users.html" class="card-btn">Open Users</a>
+            </div>
+            
+            <div class="card highlight">
+                <h2>API Testing Interface</h2>
+                <p>Test all API endpoints with a simple interface</p>
+                <a href="api_test.html" class="card-btn">Open API Tester</a>
+            </div>
+            
+            <div class="card">
+                <h2>API Documentation</h2>
+                <p>View comprehensive API documentation</p>
+                <a href="../API_DOCUMENTATION.md" target="_blank" class="card-btn">View Docs</a>
+            </div>
+        </div>
+        
+        <div class="dashboard-info">
+            <h2>System Information</h2>
+            <div class="info-container">
+                <div class="info-item">
+                    <strong>API Status:</strong>
+                    <span id="api-status">Checking...</span>
+                </div>
+                <div class="info-item">
+                    <strong>Total Books:</strong>
+                    <span id="total-books">Loading...</span>
+                </div>
+                <div class="info-item">
+                    <strong>Total Users:</strong>
+                    <span id="total-users">Loading...</span>
+                </div>
+                <div class="info-item">
+                    <strong>Server Time:</strong>
+                    <span id="server-time">Loading...</span>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <p>XML Library Admin Panel &copy; 2025</p>
+    </footer>
+
+    <style>
+        .dashboard-cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 20px;
+            margin-bottom: 2rem;
+        }
+        
+        .card {
+            background-color: white;
+            border-radius: 5px;
+            padding: 1.5rem;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+        
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+        
+        .card h2 {
+            margin-bottom: 0.5rem;
+        }
+        
+        .card p {
+            color: #666;
+            margin-bottom: 1.5rem;
+        }
+        
+        .card-btn {
+            display: inline-block;
+            padding: 10px 20px;
+            background-color: var(--primary-color);
+            color: white;
+            text-decoration: none;
+            border-radius: 4px;
+            transition: background-color 0.3s;
+        }
+        
+        .card-btn:hover {
+            background-color: var(--secondary-color);
+        }
+        
+        .card.highlight {
+            border-left: 4px solid var(--accent-color);
+        }
+        
+        .dashboard-info {
+            background-color: white;
+            border-radius: 5px;
+            padding: 1.5rem;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+        
+        .info-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: 20px;
+            margin-top: 1rem;
+        }
+        
+        .info-item {
+            padding: 1rem;
+            background-color: #f8f9fa;
+            border-radius: 4px;
+        }
+        
+        .info-item strong {
+            display: block;
+            margin-bottom: 5px;
+            color: var(--secondary-color);
+        }
+    </style>
+
+    <script>
+        // Simple dashboard functionality
+        document.addEventListener('DOMContentLoaded', function() {
+            // Check API status
+            fetch('http://localhost:5000/health')
+                .then(response => {
+                    if (response.ok) {
+                        document.getElementById('api-status').textContent = 'Online';
+                        document.getElementById('api-status').style.color = 'green';
+                    } else {
+                        throw new Error('API is offline');
+                    }
+                })
+                .catch(() => {
+                    document.getElementById('api-status').textContent = 'Offline';
+                    document.getElementById('api-status').style.color = 'red';
+                });
+            
+            // Update server time
+            setInterval(() => {
+                const now = new Date();
+                document.getElementById('server-time').textContent = now.toLocaleString();
+            }, 1000);
+            
+            // For demo purposes, set fake book and user counts
+            setTimeout(() => {
+                document.getElementById('total-books').textContent = '42';
+                document.getElementById('total-users').textContent = '15';
+            }, 1000);
+        });
+    </script>
+</body>
+</html>

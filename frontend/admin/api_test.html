@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">    <title>XML Library - Admin Panel</title>
+    <link rel="stylesheet" href="../css/admin.css">
+    <script src="../js/api_test.js" defer></script>
+</head>
+<body>
+    <header>
+        <div class="logo">XML Library Admin Panel</div>
+        <nav>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="books.html">Books</a></li>
+                <li><a href="users.html">Users</a></li>
+                <li class="active"><a href="api_test.html">API Test</a></li>
+                <li><a href="#" id="logoutBtn">Logout</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main class="container">
+        <h1>API Test Interface</h1>
+        <div class="api-interface">
+            <div class="api-categories">
+                <h2>Categories</h2>
+                <ul>
+                    <li class="active" data-category="authentication">Authentication</li>
+                    <li data-category="books">Books Management</li>
+                    <!-- XML Transformation removed -->
+                    <!-- XML Parsing removed -->
+                    <!-- External Services removed -->
+                    <li data-category="info">Info & Utilities</li>
+                </ul>                <div class="doc-link">
+                    <a href="../../API_DOCUMENTATION.md" target="_blank">View Full API Documentation</a>
+                </div>
+            </div>
+
+            <div class="api-endpoints">
+                <div class="endpoint-section" id="authentication">
+                    <h2>Authentication</h2>
+                      <div class="endpoint">                        <h3>Login</h3>
+                        <div class="endpoint-details">
+                            <div class="method post">POST</div>
+                            <div class="url">/api/v1/login</div>
+                        </div>
+                        <div class="description">
+                            Authenticates a user and returns a JWT token.
+                        </div>
+                        <div class="request-form">
+                            <textarea class="xml-input" data-endpoint="auth-login">
+<?xml version="1.0" encoding="UTF-8"?>
+<login>
+    <username>admin</username>
+    <password>adminpass</password>
+</login></textarea>                            <div class="form-actions">
+                                <button class="send-btn" data-endpoint="auth-login">Send Request</button>
+                                <span id="auth-login-loading" class="loading-indicator" style="display:none;">Loading...</span>
+                            </div>
+                        </div>
+                        <div class="response-container" id="auth-login-response">
+                            <h4>Response</h4>
+                            <div class="response-status"></div>
+                            <pre class="response-body"></pre>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="endpoint-section hidden" id="books">
+                    <h2>Books Management</h2>
+                    
+                    <div class="endpoint">
+                        <h3>Get All Books</h3>
+                        <div class="endpoint-details">
+                            <div class="method get">GET</div>
+                            <div class="url">/api/v1/books</div>
+                        </div>
+                        <div class="description">
+                            Retrieves all books in the library.
+                        </div>                        <div class="request-form">
+                            <div class="form-note">No request body needed for this endpoint.</div>
+                            <div class="form-actions">
+                                <button class="send-btn" data-endpoint="books-getall">Send Request</button>
+                                <span id="books-getall-loading" class="loading-indicator" style="display:none;">Loading...</span>
+                            </div>
+                        </div>
+                        <div class="response-container" id="books-getall-response">
+                            <h4>Response</h4>
+                            <div class="response-status"></div>
+                            <pre class="response-body"></pre>
+                        </div>
+                    </div>
+                    
+                    <div class="endpoint">
+                        <h3>Get Book by ID</h3>
+                        <div class="endpoint-details">
+                            <div class="method get">GET</div>
+                            <div class="url">/api/v1/books/{id}</div>
+                        </div>
+                        <div class="description">
+                            Retrieves a specific book by its ID.
+                        </div>
+                        <div class="request-form">
+                            <div class="form-group">
+                                <label>Book ID:</label>
+                                <input type="text" id="book-id" value="1">
+                            </div>                            <div class="form-actions">
+                                <button class="send-btn" data-endpoint="books-getbyid">Send Request</button>
+                                <span id="books-getbyid-loading" class="loading-indicator" style="display:none;">Loading...</span>
+                            </div>
+                        </div>
+                        <div class="response-container" id="books-getbyid-response">
+                            <h4>Response</h4>
+                            <div class="response-status"></div>
+                            <pre class="response-body"></pre>
+                        </div>
+                    </div>
+                    
+                    <div class="endpoint">
+                        <h3>Add Book</h3>
+                        <div class="endpoint-details">
+                            <div class="method post">POST</div>
+                            <div class="url">/api/v1/books</div>
+                        </div>
+                        <div class="description">
+                            Adds a new book to the library. Requires admin token.
+                        </div>
+                        <div class="request-form">                            <textarea class="xml-input" data-endpoint="books-add">
+<?xml version="1.0" encoding="UTF-8"?>
+<book>
+    <title>The Great Gatsby</title>
+    <author>F. Scott Fitzgerald</author>
+    <year>1925</year>
+    <isbn>978-0743273565</isbn>
+    <publisher>Scribner</publisher>
+    <category>Fiction</category>
+    <description>A novel of the Jazz Age</description>
+</book></textarea>                            <div class="form-actions">
+                                <button class="send-btn" data-endpoint="books-add">Send Request</button>
+                                <span id="books-add-loading" class="loading-indicator" style="display:none;">Loading...</span>
+                            </div>
+                        </div>
+                        <div class="response-container" id="books-add-response">
+                            <h4>Response</h4>
+                            <div class="response-status"></div>
+                            <pre class="response-body"></pre>
+                        </div>
+                    </div>
+                    
+                    <div class="endpoint">
+                        <h3>Delete Book</h3>
+                        <div class="endpoint-details">
+                            <div class="method delete">DELETE</div>
+                            <div class="url">/api/v1/books/{id}</div>
+                        </div>
+                        <div class="description">
+                            Deletes a book from the library. Requires admin token.
+                        </div>
+                        <div class="request-form">
+                            <div class="form-group">
+                                <label>Book ID to delete:</label>
+                                <input type="text" id="book-delete-id" value="">
+                            </div>                            <div class="form-actions">
+                                <button class="send-btn" data-endpoint="books-delete">Send Request</button>
+                                <span id="books-delete-loading" class="loading-indicator" style="display:none;">Loading...</span>
+                            </div>
+                        </div>
+                        <div class="response-container" id="books-delete-response">
+                            <h4>Response</h4>
+                            <div class="response-status"></div>
+                            <pre class="response-body"></pre>
+                        </div>
+                    </div>                </div>
+
+                <!-- XML Transformation section removed -->
+  
+  <!-- External Services section removed -->
+                
+                <div class="endpoint-section hidden" id="info">
+                    <h2>Info & Utilities</h2>
+                    
+                    <div class="endpoint">
+                        <h3>API Information</h3>
+                        <div class="endpoint-details">
+                            <div class="method get">GET</div>
+                            <div class="url">/api/v1/info</div>
+                        </div>
+                        <div class="description">
+                            Returns information about the API.
+                        </div>
+                        <div class="request-form">
+                            <div class="form-note">No request body needed for this endpoint.</div>                            <div class="form-actions">
+                                <button class="send-btn" data-endpoint="info-api">Send Request</button>
+                                <span id="info-api-loading" class="loading-indicator" style="display:none;">Loading...</span>
+                            </div>
+                        </div>
+                        <div class="response-container" id="info-api-response">
+                            <h4>Response</h4>
+                            <div class="response-status"></div>
+                            <pre class="response-body"></pre>
+                        </div>
+                    </div>
+                    
+                    <div class="endpoint">
+                        <h3>Validate XML</h3>
+                        <div class="endpoint-details">
+                            <div class="method post">POST</div>
+                            <div class="url">/api/v1/validate</div>
+                        </div>
+                        <div class="description">
+                            Validates an XML document against a schema (DTD or XSD).
+                        </div>
+                        <div class="request-form">
+                            <div class="form-group">
+                                <label>Schema type:</label>
+                                <select id="validate-schema-type">
+                                    <option value="dtd">DTD</option>
+                                    <option value="xsd">XSD</option>
+                                </select>
+                            </div>                            <textarea class="xml-input" data-endpoint="info-validate">
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE book SYSTEM "http://localhost:5000/api/v1/schemas/book.dtd">
+<book id="1">
+    <title>To Kill a Mockingbird</title>
+    <author>Harper Lee</author>
+    <year>1960</year>
+    <isbn>978-0446310789</isbn>
+    <publisher>Grand Central Publishing</publisher>
+    <category>Fiction</category>
+</book></textarea>                            <div class="form-actions">
+                                <button class="send-btn" data-endpoint="info-validate">Send Request</button>
+                                <span id="info-validate-loading" class="loading-indicator" style="display:none;">Loading...</span>
+                            </div>
+                        </div>
+                        <div class="response-container" id="info-validate-response">
+                            <h4>Response</h4>
+                            <div class="response-status"></div>
+                            <pre class="response-body"></pre>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <p>XML Library Admin Panel &copy; 2025</p>
+    </footer>
+</body>
+</html>
